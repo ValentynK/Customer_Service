@@ -29,5 +29,13 @@ config/secrets.yml
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
-/.idea
 .idea
+doc/
+*.swp
+*~
+.sass-cache/
+doc/
+.project
+.DS_Store
+.secret
+
