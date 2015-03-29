@@ -33,6 +33,11 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+doc/
+.project
+.DS_Store
 .idea
+.secret
 /.idea
 /idea
