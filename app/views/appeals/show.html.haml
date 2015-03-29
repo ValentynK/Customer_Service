@@ -1,0 +1,28 @@
+%p
+  %strong Name:
+  = @appeal.name
+
+%p
+  %strong E-mail:
+  = @appeal.email
+
+%p
+  %strong Issue Type:
+  = @appeal.issue_type
+
+%p
+  %strong Title:
+  =@appeal.title
+%p
+  %strong Text:
+  =@appeal.text
+
+%p
+  %strong Status:
+  =@appeal.status
+
+%p
+  %strong Section:
+  =@appeal.section
+%br
+  =link_to 'new appeal', new_appeal_path
