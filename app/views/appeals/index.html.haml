@@ -1,28 +1,24 @@
-%h1 Typing the form:
-= form_for :appeal, url: appeals_path do |f|
-  %p
-    = f.label :name
-    %br
-    = f.text_field :name
-  %p
-    = f.label :email
-    %br
-    = f.text_field :email
-  %p
-    = f.label :issue_type
-    %br
-    = f.select(:issue_type,[['Technical Issue', 'Technical Issue'],
-                            ['Billing Issue', 'Billing Issue'],
-                            ['General Issue', 'General Issue']])
-  %p
-    = f.label :title
-    %br
-    = f.text_field :title
-  %p
-    = f.label :text
-    %br
-    = f.text_area :text
-  %p
-    = f.submit 'Send Appeal'
+%h1 Customer Appeals:
 
+%table
+  %tr
+    %th Name|
+    %th E-mail|
+    %th Issue Type|
+    %th Title|
+    %th Text|
+    %th Status|
+    %th Section|
+  - @appeals.each do |a|
+    %tr
+      %td= a.name
+      %td= a.email
+      %td= a.issue_type
+      %td= a.title
+      %td= a.text
 
+      - if current_user.admin?
+        %td= a.status
+        %td= a.section
+
+      %td= link_to 'Edit', edit_appeal_path(a)

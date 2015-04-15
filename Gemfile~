@@ -19,6 +19,12 @@ gem 'haml'
 gem 'html2haml'
 gem 'devise'
 gem 'friendly_id'
+gem 'cancan'
+gem 'pundit'
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

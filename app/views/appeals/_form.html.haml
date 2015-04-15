@@ -1,0 +1,55 @@
+= form_for @appeal do |a|
+
+  - if @appeal.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@appeal.errors.count, "error")
+        prohibited this appeal from being saved:
+      %ul
+        - @appeal.errors.full_messages.each do |msg|
+          %li= msg
+
+  %p
+    = a.label :name
+    %br
+    = a.text_field :name
+
+  %p
+    = a.label :email
+    %br
+    = a.text_field :email
+
+  %p
+    = a.label :issue_type
+    %br
+    = a.select(:issue_type,[['Technical Issue', 'Technical Issue'],
+                            ['Billing Issue', 'Billing Issue'],
+                            ['General Issue', 'General Issue']])
+
+  %p
+    = a.label :title
+    %br
+    = a.text_field :title
+
+  %p
+    = a.label :text
+    %br
+    = a.text_area :text
+
+  - if user_signed_in?
+    - if current_user.admin?
+      %p
+        = a.label :status
+        %br
+        = a.select(:status,[['Open', 'Open'],
+                          ['Resolved', 'Resolved'],
+                          ['Closed', 'Closed']])
+  %p
+    - if policy(@posts).any?
+      = link_to "New post", new_appeal_path
+  %br
+  %p
+    = a.submit 'Save Appeal'
+  %br
+
+

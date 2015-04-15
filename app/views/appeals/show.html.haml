@@ -17,12 +17,19 @@
   %strong Text:
   =@appeal.text
 
-%p
-  %strong Status:
-  =@appeal.status
-
-%p
-  %strong Section:
-  =@appeal.section
-%br
   =link_to 'new appeal', new_appeal_path
+- if not current_user.user? == @appeal
+  = link_to 'edit appeal', edit_appeal_path(@appeal)
+%br
+- if current_user.admin?
+  %p
+    %strong Status:
+    =@appeal.status
+  %br
+  %p
+    %strong Section:
+    =@appeal.section
+  %br
+  = User.count
+  = link_to 'Users:', users_path
+  registered
